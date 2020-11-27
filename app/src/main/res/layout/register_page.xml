@@ -7,13 +7,69 @@
     android:background="#FFFFFF"
     android:backgroundTint="#8FCA4A">
 
-    <EditText
-        android:id="@+id/teamNameField"
+    <ImageView
+        android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/appbackground" />
+
+    <Button
+        android:id="@+id/returnButton"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="105dp"
+        android:layout_height="49dp"
+        android:backgroundTint="#34F3F4F1"
+        android:fadingEdge="none"
+        android:fontFamily="sans-serif-light"
+        android:foregroundTint="#A12222"
+        android:text="Home"
+        app:cornerRadius="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.245"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
+        app:layout_constraintVertical_bias="0.211" />
+
+    <Button
+        android:id="@+id/registerButton2"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#32F3F4F1"
+        android:fontFamily="sans-serif-light"
+        android:text="Register"
+        app:cornerRadius="15dp"
+        app:iconTint="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.692"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
+        app:layout_constraintVertical_bias="0.21" />
+
+    <EditText
+        android:id="@+id/teamNameField"
+        style="@style/Widget.AppCompat.EditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#BFFFFFFF"
         android:ems="10"
+        android:fontFamily="sans-serif-thin"
+        android:foregroundTint="#FFFFFF"
         android:inputType="textPersonName"
         android:text="Team Name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -21,16 +77,103 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.173" />
 
+    <EditText
+        android:id="@+id/managerNameField"
+        style="@style/Widget.AppCompat.EditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#BFFFFFFF"
+        android:ems="10"
+        android:fontFamily="sans-serif-thin"
+        android:foregroundTint="#FFFFFF"
+        android:inputType="textPersonName"
+        android:text="Manager Name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/teamNameField"
+        app:layout_constraintVertical_bias="0.052" />
+
+    <EditText
+        android:id="@+id/captainNameField"
+        style="@style/Widget.AppCompat.EditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#BFFFFFFF"
+        android:ems="10"
+        android:fontFamily="sans-serif-thin"
+        android:foregroundTint="#FFFFFF"
+        android:inputType="textPersonName"
+        android:text="Captain Name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/managerNameField"
+        app:layout_constraintVertical_bias="0.066" />
+
+    <EditText
+        android:id="@+id/usernameField"
+        style="@style/Widget.AppCompat.EditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#BE474040"
+        android:ems="10"
+        android:fontFamily="sans-serif"
+        android:foregroundTint="#FFFFFF"
+        android:inputType="textPersonName"
+        android:text="User Name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#BE474040"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/managerNameField"
+        app:layout_constraintVertical_bias="0.244" />
+
     <TextView
         android:id="@+id/registerPageLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-thin"
+        android:fontFamily="sans-serif-light"
         android:text="Register Team"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="#374220"
+        android:textColor="#E6F1F3EC"
         app:layout_constraintBottom_toTopOf="@+id/teamNameField"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextTextPassword"
+        android:layout_width="261dp"
+        android:layout_height="49dp"
+        android:backgroundTint="#BF000000"
+        android:ems="10"
+        android:fontFamily="sans-serif"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#BE474040"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usernameField"
+        app:layout_constraintVertical_bias="0.1" />
+
+    <TextView
+        android:id="@+id/registerRateLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dont forget to rate the app"
+        android:textColor="#EFE5E5"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
+        app:layout_constraintVertical_bias="0.931" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
