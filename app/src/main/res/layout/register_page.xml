@@ -43,8 +43,8 @@
     <Button
         android:id="@+id/registerButton2"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="105dp"
+        android:layout_height="49dp"
         android:backgroundTint="#32F3F4F1"
         android:fontFamily="sans-serif-light"
         android:text="Register"
