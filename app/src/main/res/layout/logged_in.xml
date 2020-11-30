@@ -17,18 +17,63 @@
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
         app:srcCompat="@drawable/appbackground" />
 
+    <!--    <LinearLayout-->
+    <!--        -->
+
+    <!--        <ImageView-->
+    <!--            android:id="@+id/homeTab"-->
+    <!--            android:layout_width="100dp"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_margin="5dp"-->
+    <!--            android:padding="5dp"-->
+    <!--            android:src="@drawable/home_image"-->
+    <!--            android:background="@color/white"/>-->
+
+    <!--        <ImageView-->
+    <!--            android:id="@+id/addTab"-->
+    <!--            android:layout_width="100dp"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_margin="5dp"-->
+    <!--            android:padding="5dp"-->
+    <!--            android:src="@drawable/plus_image"-->
+    <!--            android:background="@color/white"/>-->
+
+    <!--        <ImageView-->
+    <!--            android:id="@+id/accountTab"-->
+    <!--            android:layout_width="100dp"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_margin="5dp"-->
+    <!--            android:padding="5dp"-->
+
+    <!--            android:src="@drawable/account_image"-->
+    <!--            android:background="@android:color/white"/>-->
+    <!--        -->
+    <!--    </LinearLayout>-->
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#B9FFFFFF">
 
+
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:tabBackground="@drawable/appbackground"
-            app:tabGravity="fill"
+            android:layout_height="60dp"
+            android:layout_alignParentStart="false"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="10dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/bottom_shape_nav"
+            android:elevation="5dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            app:tabGravity="center"
             app:tabInlineLabel="true"
             app:tabMode="fixed"
             app:tabTextAppearance="@style/CustomTabLayout"
@@ -38,8 +83,8 @@
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
-        android:layout_width="407dp"
-        android:layout_height="635dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_below="@id/appBarLayout"
         android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="@+id/appBarLayout"

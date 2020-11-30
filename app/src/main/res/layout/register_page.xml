@@ -125,7 +125,7 @@
         android:ems="10"
         android:fontFamily="sans-serif"
         android:foregroundTint="#FFFFFF"
-        android:hint="User Name"
+        android:hint="Email Address"
         android:inputType="textWebEmailAddress|textPersonName"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#BE474040"
