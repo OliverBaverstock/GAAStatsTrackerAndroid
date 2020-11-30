@@ -9,8 +9,9 @@ import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import kotlinx.android.synthetic.main.welcome_page.*
+import org.jetbrains.anko.AnkoLogger
 
-class WelcomePage : AppCompatActivity() {
+class WelcomePage : AppCompatActivity(), AnkoLogger {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

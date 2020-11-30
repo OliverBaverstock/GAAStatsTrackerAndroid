@@ -9,8 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.login_page.*
 import kotlinx.android.synthetic.main.register_page.*
 import kotlinx.android.synthetic.main.welcome_page.*
+import org.jetbrains.anko.AnkoLogger
 
-class RegisterPage: AppCompatActivity() {
+class RegisterPage: AppCompatActivity(), AnkoLogger {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.register_page)
@@ -21,6 +22,16 @@ class RegisterPage: AppCompatActivity() {
             Handler(Looper.getMainLooper()).postDelayed({
                 run {
                     startActivity(Intent(this, WelcomePage::class.java))
+                    finish()
+                }
+            }, 250)
+        }
+
+        registerButton2.setOnClickListener {
+            registerConstraint.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_out))
+            Handler(Looper.getMainLooper()).postDelayed({
+                run {
+                    startActivity(Intent(this, LoginPage::class.java))
                     finish()
                 }
             }, 250)

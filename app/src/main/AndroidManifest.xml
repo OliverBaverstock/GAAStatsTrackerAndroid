@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="oliver.gaa_stats_tracker">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,8 +12,7 @@
         android:theme="@style/Fullscreen">
         <activity
             android:name=".LoggedIn"
-            android:label="@string/title_activity_logged_in"
-            android:theme="@style/Fullscreen.NoActionBar"></activity>
+            android:theme="@style/Fullscreen"/>
         <activity
             android:name=".LoginPage"
             android:theme="@style/Fullscreen" />

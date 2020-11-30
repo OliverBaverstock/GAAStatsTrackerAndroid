@@ -27,6 +27,10 @@
         <item name="android:windowBackground">@drawable/appbackground</item>
     </style>
 
+    <style name="CustomTabLayout" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">10sp</item>
+    </style>
+
     <style name="Fullscreen.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
