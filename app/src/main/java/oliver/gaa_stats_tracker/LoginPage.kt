@@ -5,11 +5,14 @@ import android.database.SQLException
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Patterns
 import android.view.animation.AnimationUtils
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.login_page.*
+import kotlinx.android.synthetic.main.register_page.*
 import org.jetbrains.anko.AnkoLogger
 
 
@@ -33,10 +36,7 @@ class LoginPage : AppCompatActivity(), AnkoLogger {
             }, 250)
         }
         signinButton.setOnClickListener {
-            var uname = usernameLoginField.text.toString()
-            var pword = passwordLoginField.text.toString()
-            System.out.print(uname)
-            System.out.print(pword)
+            loginUser()
         }
 
     }
@@ -51,6 +51,45 @@ class LoginPage : AppCompatActivity(), AnkoLogger {
 
     fun updateUI(currentUser : FirebaseUser?){
 
+    }
+
+    fun loginUser(){
+        if(usernameLoginField.text.toString().isEmpty()){
+            usernameLoginField.error = "Email cannot be empty"
+            usernameLoginField.requestFocus()
+            return
+        }
+
+        if(!Patterns.EMAIL_ADDRESS.matcher(usernameLoginField.text.toString()).matches()){
+            usernameLoginField.error = "Please enter a valid email"
+            usernameLoginField.requestFocus()
+            return
+        }
+
+        if(passwordLoginField.text.toString().isEmpty()){
+            passwordLoginField.error = "Please enter a password"
+            passwordLoginField.requestFocus()
+            return
+        }
+
+        auth.signInWithEmailAndPassword(usernameLoginField.text.toString(), passwordLoginField.text.toString())
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    loginConstraint.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_out))
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        run {
+                            startActivity(Intent(this, LoggedIn::class.java))
+                            finish()
+                        }
+                    }, 250)
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Toast.makeText(baseContext, "Sign Up Failed",
+                        Toast.LENGTH_SHORT).show()
+                }
+
+                // ...
+            }
     }
 
 }
