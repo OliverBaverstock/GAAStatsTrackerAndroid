@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "885458361315",
+    "firebase_url": "https://gaastatstrackerandroid.firebaseio.com",
+    "project_id": "gaastatstrackerandroid",
+    "storage_bucket": "gaastatstrackerandroid.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:885458361315:android:2a0436ecc79fd030cc1ed6",
+        "android_client_info": {
+          "package_name": "oliver.gaa_stats_tracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "885458361315-oq9q9hhjst2trh3hmjebkmhndt9o6bfa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEkpQREecqrGW_VD6YdBUYSleVZbMjDDU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "885458361315-oq9q9hhjst2trh3hmjebkmhndt9o6bfa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

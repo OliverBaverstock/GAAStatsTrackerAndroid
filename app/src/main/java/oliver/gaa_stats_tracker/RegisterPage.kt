@@ -4,17 +4,25 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Patterns
 import android.view.animation.AnimationUtils
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.login_page.*
 import kotlinx.android.synthetic.main.register_page.*
 import kotlinx.android.synthetic.main.welcome_page.*
 import org.jetbrains.anko.AnkoLogger
 
 class RegisterPage: AppCompatActivity(), AnkoLogger {
+
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.register_page)
+        auth = FirebaseAuth.getInstance()
         registerConstraint.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in))
 
         returnButton.setOnClickListener {
@@ -28,13 +36,47 @@ class RegisterPage: AppCompatActivity(), AnkoLogger {
         }
 
         registerButton2.setOnClickListener {
-            registerConstraint.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_out))
-            Handler(Looper.getMainLooper()).postDelayed({
-                run {
-                    startActivity(Intent(this, LoginPage::class.java))
-                    finish()
-                }
-            }, 250)
+
+            signUpUser()
         }
     }
+
+    fun signUpUser(){
+            if(usernameField.text.toString().isEmpty()){
+                usernameField.error = "Email cannot be empty"
+                usernameField.requestFocus()
+                return
+            }
+
+            if(!Patterns.EMAIL_ADDRESS.matcher(usernameField.text.toString()).matches()){
+                usernameField.error = "Please enter a valid email"
+                usernameField.requestFocus()
+                return
+            }
+
+            if(registerPassword.text.toString().isEmpty()){
+                registerPassword.error = "Please enter a password"
+                registerPassword.requestFocus()
+                return
+            }
+
+        auth.createUserWithEmailAndPassword(usernameField.text.toString(), registerPassword.text.toString())
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    registerConstraint.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_out))
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        run {
+                            startActivity(Intent(this, LoginPage::class.java))
+                            finish()
+                        }
+                    }, 250)
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Toast.makeText(baseContext, "Sign Up Failed",
+                        Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
+
 }

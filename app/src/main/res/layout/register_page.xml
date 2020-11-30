@@ -38,7 +38,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.245"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
+        app:layout_constraintTop_toBottomOf="@+id/registerPassword"
         app:layout_constraintVertical_bias="0.211" />
 
     <Button
@@ -55,7 +55,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.692"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
+        app:layout_constraintTop_toBottomOf="@+id/registerPassword"
         app:layout_constraintVertical_bias="0.21" />
 
     <EditText
@@ -126,7 +126,7 @@
         android:fontFamily="sans-serif"
         android:foregroundTint="#FFFFFF"
         android:hint="User Name"
-        android:inputType="textPersonName"
+        android:inputType="textWebEmailAddress|textPersonName"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#BE474040"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -149,7 +149,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/registerPassword"
         android:layout_width="261dp"
         android:layout_height="49dp"
         android:backgroundTint="#BF000000"
@@ -174,7 +174,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
+        app:layout_constraintTop_toBottomOf="@+id/registerPassword"
         app:layout_constraintVertical_bias="0.931" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
