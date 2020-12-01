@@ -28,7 +28,6 @@ class NewMatchFragment : Fragment() {
         super.onCreate(savedInstanceState)
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
-        //matchesReference = database?.reference!!.child("Matches")
         matchesReference = database?.getReference("Matches")
         profileReference = database?.reference!!.child("Profile")
     }
@@ -39,10 +38,14 @@ class NewMatchFragment : Fragment() {
     ): View? {
         var view: View = inflater.inflate(R.layout.new_match_fragment, container, false)
         var addMatchButton: View = view.findViewById(R.id.addMatchButton)
+        var resetFieldsButton: View = view.findViewById(R.id.resetFieldsButton)
         lottieAnimationView = view.findViewById(R.id.celebration)
         loadProfile()
         addMatchButton.setOnClickListener {
             addMatch()
+        }
+        resetFieldsButton.setOnClickListener {
+            resetFields()
         }
         return view
     }

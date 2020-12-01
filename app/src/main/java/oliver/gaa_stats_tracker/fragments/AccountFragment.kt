@@ -18,16 +18,15 @@ import oliver.gaa_stats_tracker.WelcomePage
 class AccountFragment : Fragment() {
 
     lateinit var auth: FirebaseAuth
-    var databaseReference : DatabaseReference? = null
+    //var databaseReference : DatabaseReference? = null
     var database: FirebaseDatabase? = null
+    var profileReference: DatabaseReference? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
-        databaseReference = database?.reference!!.child("Profile")
-
-        loadProfile()
+        profileReference = database?.reference!!.child("Profile")
         }
 
 
@@ -37,6 +36,7 @@ class AccountFragment : Fragment() {
     ): View? {
         var view: View = inflater.inflate(R.layout.account_fragment, container, false)
         var logoutButton: View = view.findViewById(R.id.logoutButton)
+        loadProfile()
         logoutButton.setOnClickListener {
             auth.signOut()
             startActivity(Intent(context, WelcomePage::class.java))
@@ -48,7 +48,7 @@ class AccountFragment : Fragment() {
 
     fun loadProfile(){
         val user = auth.currentUser
-        val userReference = databaseReference?.child(user?.uid!!)
+        val userReference = profileReference?.child(user?.uid!!)
 
         userReference?.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
