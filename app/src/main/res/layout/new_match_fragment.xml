@@ -4,21 +4,173 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.NewMatchFragment">
+    android:background="#CBFFFFFF"
+    tools:context=".fragments.NewMatchFragment" >
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <View
+        android:id="@+id/view5"
+        android:layout_width="175dp"
+        android:layout_height="1dp"
+        android:background="#99191818"
+        app:layout_constraintBottom_toBottomOf="@+id/teamNameFieldNew"
+        app:layout_constraintEnd_toEndOf="@+id/teamNameFieldNew"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/teamNameFieldNew"
+        app:layout_constraintTop_toTopOf="@+id/teamNameFieldNew"
+        app:layout_constraintVertical_bias="0.8" />
+
+    <TextView
+        android:id="@+id/teamNameFieldNew"
+        android:layout_width="175dp"
+        android:layout_height="41dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center_horizontal|left"
+        android:paddingBottom="3dp"
+        android:textColor="#BE191818"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.072"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.361" />
+
+    <Button
+        android:id="@+id/addMatchButton"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="120dp"
+        android:layout_height="49dp"
+        android:layout_marginBottom="148dp"
+        android:backgroundTint="#52191818"
+        android:fadingEdge="none"
+        android:fontFamily="sans-serif-light"
+        android:foregroundTint="#A12222"
+        android:text="Add Match"
+        app:cornerRadius="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.762"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordLoginField"
+        app:layout_constraintVertical_bias="0.129" />
+
+    <Button
+        android:id="@+id/resetFieldsButton"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="120dp"
+        android:layout_height="49dp"
+        android:layout_marginBottom="148dp"
+        android:backgroundTint="#52191818"
+        android:fadingEdge="none"
+        android:fontFamily="sans-serif-light"
+        android:foregroundTint="#A12222"
+        android:text="Reset"
+        app:cornerRadius="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.247"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordLoginField"
+        app:layout_constraintVertical_bias="0.125" />
+
+    <EditText
+        android:id="@+id/oppNameField"
+        android:layout_width="175dp"
+        android:layout_height="41dp"
+        android:ems="10"
+        android:hint="Opposition Name"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/homeGoalsField"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.94"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newMatchLabel"
+        app:layout_constraintVertical_bias="0.711" />
+
+    <EditText
+        android:id="@+id/oppGoalsField"
+        android:layout_width="175dp"
+        android:layout_height="41dp"
+        android:ems="10"
+        android:hint="Opposition Goals"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.94"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newMatchLabel"
+        app:layout_constraintVertical_bias="0.555" />
+
+    <EditText
+        android:id="@+id/oppPointsField"
+        android:layout_width="175dp"
+        android:layout_height="41dp"
+        android:ems="10"
+        android:hint="Opposition Goals"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.94"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newMatchLabel"
+        app:layout_constraintVertical_bias="0.387" />
+
+    <TextView
+        android:id="@+id/newMatchLabel"
+        android:layout_width="242dp"
+        android:layout_height="67dp"
+        android:fontFamily="sans-serif-thin"
+        android:gravity="center"
+        android:text="New Match"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="#191818"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.079" />
+
+    <EditText
+        android:id="@+id/homeGoalsField"
+        android:layout_width="175dp"
+        android:layout_height="41dp"
+        android:ems="10"
+        android:hint="Team Goals"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.072"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newMatchLabel"
+        app:layout_constraintVertical_bias="0.389" />
+
+    <EditText
+        android:id="@+id/homePointsField"
+        android:layout_width="175dp"
+        android:layout_height="41dp"
+        android:ems="10"
+        android:hint="Team Points"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.072"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newMatchLabel"
+        app:layout_constraintVertical_bias="0.555" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/celebration"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="60dp"
-            android:layout_height="14dp"
-            android:text="New Match"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="false"
+        app:lottie_loop="false"
+        android:fromAlpha="1.0"
+        android:toAlpha="0"
+        app:lottie_rawRes="@raw/celebration"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

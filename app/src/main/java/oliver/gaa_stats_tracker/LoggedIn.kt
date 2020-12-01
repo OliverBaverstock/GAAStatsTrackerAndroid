@@ -1,11 +1,16 @@
 package oliver.gaa_stats_tracker
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.animation.AnimationUtils
 import android.widget.ImageButton
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import kotlinx.android.synthetic.main.account_fragment.*
 import kotlinx.android.synthetic.main.logged_in.*
 import kotlinx.android.synthetic.main.login_page.*
 import oliver.gaa_stats_tracker.fragments.AccountFragment
@@ -16,9 +21,11 @@ import org.jetbrains.anko.AnkoLogger
 
 class LoggedIn : AppCompatActivity(), AnkoLogger {
 
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        auth = FirebaseAuth.getInstance()
         setContentView(R.layout.logged_in)
         setUpTabs()
         loggedInLayout.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in))

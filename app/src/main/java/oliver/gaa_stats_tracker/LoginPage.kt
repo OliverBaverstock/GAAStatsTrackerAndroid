@@ -11,6 +11,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.login_page.*
 import kotlinx.android.synthetic.main.register_page.*
 import org.jetbrains.anko.AnkoLogger
@@ -21,8 +23,9 @@ class LoginPage : AppCompatActivity(), AnkoLogger {
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        auth = FirebaseAuth.getInstance()
         super.onCreate(savedInstanceState)
+        auth = FirebaseAuth.getInstance()
+
         setContentView(R.layout.login_page)
         loginConstraint.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in))
 
@@ -49,33 +52,41 @@ class LoginPage : AppCompatActivity(), AnkoLogger {
         updateUI(currentUser)
     }
 
-    fun updateUI(currentUser : FirebaseUser?){
+    fun updateUI(currentUser: FirebaseUser?) {
 
     }
 
-    fun loginUser(){
-        if(usernameLoginField.text.toString().isEmpty()){
+    fun loginUser() {
+        if (usernameLoginField.text.toString().isEmpty()) {
             usernameLoginField.error = "Email cannot be empty"
             usernameLoginField.requestFocus()
             return
         }
 
-        if(!Patterns.EMAIL_ADDRESS.matcher(usernameLoginField.text.toString()).matches()){
+        if (!Patterns.EMAIL_ADDRESS.matcher(usernameLoginField.text.toString()).matches()) {
             usernameLoginField.error = "Please enter a valid email"
             usernameLoginField.requestFocus()
             return
         }
 
-        if(passwordLoginField.text.toString().isEmpty()){
+        if (passwordLoginField.text.toString().isEmpty()) {
             passwordLoginField.error = "Please enter a password"
             passwordLoginField.requestFocus()
             return
         }
 
-        auth.signInWithEmailAndPassword(usernameLoginField.text.toString(), passwordLoginField.text.toString())
+        auth.signInWithEmailAndPassword(
+            usernameLoginField.text.toString(),
+            passwordLoginField.text.toString()
+        )
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    loginConstraint.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_out))
+                    loginConstraint.startAnimation(
+                        AnimationUtils.loadAnimation(
+                            this,
+                            R.anim.fade_out
+                        )
+                    )
                     Handler(Looper.getMainLooper()).postDelayed({
                         run {
                             startActivity(Intent(this, LoggedIn::class.java))
@@ -83,13 +94,13 @@ class LoginPage : AppCompatActivity(), AnkoLogger {
                         }
                     }, 250)
                 } else {
+                    passwordLoginField.error = "Username Or Password Incorrect"
                     // If sign in fails, display a message to the user.
-                    Toast.makeText(baseContext, "Sign Up Failed",
-                        Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        baseContext, "Sign Up Failed",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
-
-                // ...
             }
     }
-
 }

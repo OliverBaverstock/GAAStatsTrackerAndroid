@@ -7,54 +7,11 @@
     android:layout_height="match_parent"
     tools:context=".LoggedIn">
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-        app:srcCompat="@drawable/appbackground" />
-
-    <!--    <LinearLayout-->
-    <!--        -->
-
-    <!--        <ImageView-->
-    <!--            android:id="@+id/homeTab"-->
-    <!--            android:layout_width="100dp"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_margin="5dp"-->
-    <!--            android:padding="5dp"-->
-    <!--            android:src="@drawable/home_image"-->
-    <!--            android:background="@color/white"/>-->
-
-    <!--        <ImageView-->
-    <!--            android:id="@+id/addTab"-->
-    <!--            android:layout_width="100dp"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_margin="5dp"-->
-    <!--            android:padding="5dp"-->
-    <!--            android:src="@drawable/plus_image"-->
-    <!--            android:background="@color/white"/>-->
-
-    <!--        <ImageView-->
-    <!--            android:id="@+id/accountTab"-->
-    <!--            android:layout_width="100dp"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_margin="5dp"-->
-    <!--            android:padding="5dp"-->
-
-    <!--            android:src="@drawable/account_image"-->
-    <!--            android:background="@android:color/white"/>-->
-    <!--        -->
-    <!--    </LinearLayout>-->
-
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#B9FFFFFF">
+        android:layout_height="75dp"
+        android:background="#CBFFFFFF">
 
 
         <com.google.android.material.tabs.TabLayout
@@ -86,7 +43,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/appBarLayout"
-        android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="@+id/appBarLayout"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 

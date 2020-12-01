@@ -17,10 +17,10 @@ import kotlinx.android.synthetic.main.register_page.*
 import kotlinx.android.synthetic.main.welcome_page.*
 import org.jetbrains.anko.AnkoLogger
 
-class RegisterPage: AppCompatActivity(), AnkoLogger {
+class RegisterPage : AppCompatActivity(), AnkoLogger {
 
     private lateinit var auth: FirebaseAuth
-    var databaseReference : DatabaseReference? = null
+    var databaseReference: DatabaseReference? = null
     var database: FirebaseDatabase? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,26 +47,47 @@ class RegisterPage: AppCompatActivity(), AnkoLogger {
         }
     }
 
-    fun signUpUser(){
-            if(usernameField.text.toString().isEmpty()){
-                usernameField.error = "Email cannot be empty"
-                usernameField.requestFocus()
-                return
-            }
+    fun signUpUser() {
+        if (usernameField.text.toString().isEmpty()) {
+            usernameField.error = "Email cannot be empty"
+            usernameField.requestFocus()
+            return
+        }
 
-            if(!Patterns.EMAIL_ADDRESS.matcher(usernameField.text.toString()).matches()){
-                usernameField.error = "Please enter a valid email"
-                usernameField.requestFocus()
-                return
-            }
+        if (!Patterns.EMAIL_ADDRESS.matcher(usernameField.text.toString()).matches()) {
+            usernameField.error = "Please enter a valid email"
+            usernameField.requestFocus()
+            return
+        }
 
-            if(registerPassword.text.toString().isEmpty()){
-                registerPassword.error = "Please enter a password"
-                registerPassword.requestFocus()
-                return
-            }
+        if (registerPassword.text.toString().isEmpty()) {
+            registerPassword.error = "Please enter a password"
+            registerPassword.requestFocus()
+            return
+        }
 
-        auth.createUserWithEmailAndPassword(usernameField.text.toString(), registerPassword.text.toString())
+        if (teamNameField.text.toString().isEmpty()) {
+            teamNameField.error = "Please enter a team name"
+            teamNameField.requestFocus()
+            return
+        }
+
+        if (managerNameField.text.toString().isEmpty()) {
+            managerNameField.error = "Please enter a manager name"
+            managerNameField.requestFocus()
+            return
+        }
+
+        if(captainNameField.text.toString().isEmpty()){
+            captainNameField.error = "Please enter a captain name"
+            captainNameField.requestFocus()
+            return
+        }
+
+        auth.createUserWithEmailAndPassword(
+            usernameField.text.toString(),
+            registerPassword.text.toString()
+        )
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     val currentUser = auth.currentUser
@@ -75,7 +96,12 @@ class RegisterPage: AppCompatActivity(), AnkoLogger {
                     currentUserDB?.child("manager_name")?.setValue(managerNameField.text.toString())
                     currentUserDB?.child("captain_name")?.setValue(captainNameField.text.toString())
 
-                    registerConstraint.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_out))
+                    registerConstraint.startAnimation(
+                        AnimationUtils.loadAnimation(
+                            this,
+                            R.anim.fade_out
+                        )
+                    )
                     Handler(Looper.getMainLooper()).postDelayed({
                         run {
                             startActivity(Intent(this, LoginPage::class.java))
@@ -84,11 +110,13 @@ class RegisterPage: AppCompatActivity(), AnkoLogger {
                     }, 250)
                 } else {
                     // If sign in fails, display a message to the user.
-                    Toast.makeText(baseContext, "Sign Up Failed",
-                        Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        baseContext, "Sign Up Failed",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
-        }
+    }
 
 
 }

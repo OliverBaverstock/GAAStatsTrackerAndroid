@@ -5,7 +5,114 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
+    android:background="#CBFFFFFF"
     tools:context=".fragments.AccountFragment">
+
+    <TextView
+        android:id="@+id/emailAddressText"
+        android:layout_width="242dp"
+        android:layout_height="44dp"
+        android:fontFamily="sans-serif"
+        android:gravity="bottom|left"
+        android:textColor="#BE191818"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/ratingBarInfo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/accountInfoLabel"
+        app:layout_constraintVertical_bias="0.721"
+        android:paddingBottom="3dp"/>
+
+    <TextView
+        android:id="@+id/captainNameText"
+        android:layout_width="242dp"
+        android:layout_height="44dp"
+        android:fontFamily="sans-serif"
+        android:gravity="bottom|left"
+        android:textColor="#BE191818"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/ratingBarInfo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/accountInfoLabel"
+        app:layout_constraintVertical_bias="0.527"
+        android:paddingBottom="3dp"/>
+
+    <TextView
+        android:id="@+id/managerNameText"
+        android:layout_width="242dp"
+        android:layout_height="44dp"
+        android:fontFamily="sans-serif"
+        android:gravity="bottom|left"
+        android:textColor="#BE191818"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/ratingBarInfo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/accountInfoLabel"
+        app:layout_constraintVertical_bias="0.334"
+        android:paddingBottom="3dp"/>
+
+    <Button
+        android:id="@+id/logoutButton"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="110dp"
+        android:layout_height="49dp"
+        android:backgroundTint="#52191818"
+        android:fadingEdge="none"
+        android:fontFamily="sans-serif-light"
+        android:foregroundTint="#A12222"
+        android:text="Log Out"
+        app:cornerRadius="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailAddressText"
+        app:layout_constraintVertical_bias="0.123" />
+
+    <TextView
+        android:id="@+id/emailAddressLabel"
+        android:layout_width="150dp"
+        android:layout_height="25dp"
+        android:text="Email Address"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.321"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/accountInfoLabel"
+        app:layout_constraintVertical_bias="0.667"/>
+
+    <TextView
+        android:id="@+id/captainNameLabel"
+        android:layout_width="150dp"
+        android:layout_height="25dp"
+        android:text="Captain Name"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.321"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/accountInfoLabel"
+        app:layout_constraintVertical_bias="0.474" />
+
+    <TextView
+        android:id="@+id/managerNameLabel"
+        android:layout_width="154dp"
+        android:layout_height="25dp"
+        android:text="Manager Name"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.326"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/accountInfoLabel"
+        app:layout_constraintVertical_bias="0.281"
+        android:paddingBottom="3dp"/>
 
     <TextView
         android:id="@+id/accountInfoLabel"
@@ -24,7 +131,7 @@
         app:layout_constraintVertical_bias="0.079" />
 
     <RatingBar
-        android:id="@+id/ratingBar2"
+        android:id="@+id/ratingBarInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -40,10 +147,87 @@
         android:layout_height="19dp"
         android:gravity="center"
         android:text="Rate our app"
-        app:layout_constraintBottom_toTopOf="@+id/ratingBar2"
+        app:layout_constraintBottom_toTopOf="@+id/ratingBarInfo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/accountInfoLabel"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/teamNameLabel"
+        android:layout_width="105dp"
+        android:layout_height="24dp"
+        android:text="Team Name"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.274"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/accountInfoLabel"
+        app:layout_constraintVertical_bias="0.096" />
+
+    <TextView
+        android:id="@+id/teamNameText"
+        android:layout_width="242dp"
+        android:layout_height="44dp"
+        android:fontFamily="sans-serif"
+        android:gravity="bottom|left"
+        android:textColor="#BE191818"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/ratingBarInfo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/accountInfoLabel"
+        app:layout_constraintVertical_bias="0.148"
+        android:paddingBottom="3dp"/>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="242dp"
+        android:layout_height="1dp"
+        android:background="#BE191818"
+        app:layout_constraintBottom_toBottomOf="@+id/teamNameText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/teamNameText"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="242dp"
+        android:layout_height="1dp"
+        android:background="#BE191818"
+        app:layout_constraintBottom_toBottomOf="@+id/captainNameText"
+        app:layout_constraintEnd_toEndOf="@+id/captainNameText"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="@+id/captainNameText"
+        app:layout_constraintTop_toBottomOf="@+id/captainNameText"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="242dp"
+        android:layout_height="1dp"
+        android:background="#BE191818"
+        app:layout_constraintBottom_toBottomOf="@+id/emailAddressText"
+        app:layout_constraintEnd_toEndOf="@+id/emailAddressText"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="@+id/emailAddressText"
+        app:layout_constraintTop_toBottomOf="@+id/emailAddressText"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="242dp"
+        android:layout_height="1dp"
+        android:background="#BE191818"
+        app:layout_constraintBottom_toBottomOf="@+id/managerNameText"
+        app:layout_constraintEnd_toEndOf="@+id/managerNameText"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="@+id/managerNameText"
+        app:layout_constraintTop_toBottomOf="@+id/managerNameText"
         app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
