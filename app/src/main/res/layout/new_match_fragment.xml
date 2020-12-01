@@ -88,11 +88,11 @@
         app:layout_constraintVertical_bias="0.711" />
 
     <EditText
-        android:id="@+id/oppGoalsField"
+        android:id="@+id/oppPointsField"
         android:layout_width="175dp"
         android:layout_height="41dp"
         android:ems="10"
-        android:hint="Opposition Goals"
+        android:hint="Opposition Points"
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -102,7 +102,7 @@
         app:layout_constraintVertical_bias="0.555" />
 
     <EditText
-        android:id="@+id/oppPointsField"
+        android:id="@+id/oppGoalsField"
         android:layout_width="175dp"
         android:layout_height="41dp"
         android:ems="10"
@@ -162,15 +162,17 @@
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/celebration"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:lottie_autoPlay="false"
-        app:lottie_loop="false"
+        android:layout_height="400dp"
         android:fromAlpha="1.0"
         android:toAlpha="0"
-        app:lottie_rawRes="@raw/celebration"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.173"
+        app:lottie_autoPlay="false"
+        app:lottie_loop="false"
+        app:lottie_rawRes="@raw/celebration" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

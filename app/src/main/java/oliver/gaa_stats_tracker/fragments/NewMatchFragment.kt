@@ -1,26 +1,18 @@
 package oliver.gaa_stats_tracker.fragments
 
-import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.text.TextUtils
-import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AnimationUtils
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.account_fragment.*
 import kotlinx.android.synthetic.main.new_match_fragment.*
-import kotlinx.android.synthetic.main.register_page.*
-import oliver.gaa_stats_tracker.LoginPage
 import oliver.gaa_stats_tracker.R
 import com.airbnb.lottie.LottieAnimationView
+import oliver.gaa_stats_tracker.models.Match
 
 class NewMatchFragment : Fragment() {
 
@@ -36,7 +28,8 @@ class NewMatchFragment : Fragment() {
         super.onCreate(savedInstanceState)
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
-        matchesReference = database?.reference!!.child("Matches")
+        //matchesReference = database?.reference!!.child("Matches")
+        matchesReference = database?.getReference("Matches")
         profileReference = database?.reference!!.child("Profile")
     }
 
@@ -74,58 +67,85 @@ class NewMatchFragment : Fragment() {
             return
         }
 
-        if (oppGoalsField.text.toString().isEmpty()) {
-            oppGoalsField.error = "Please enter a valid score"
-            oppGoalsField.requestFocus()
-            return
-        }
-
         if (oppPointsField.text.toString().isEmpty()) {
-            oppPointsField.error = "Please enter a score"
+            oppPointsField.error = "Please enter a valid score"
             oppPointsField.requestFocus()
             return
         }
 
-            val currentUser = auth.currentUser
-            val currentUserDB = matchesReference?.child(currentUser?.uid!!)
-
-            //Home Team
-            currentUserDB?.child("team_name")?.setValue(teamNameFieldNew.text.toString())
-            currentUserDB?.child("team_goals")?.setValue(Integer.parseInt(homeGoalsField.text.toString()))
-            currentUserDB?.child("team_points")?.setValue(Integer.parseInt(homePointsField.text.toString()))
-
-            //Opp Team
-            currentUserDB?.child("opp_name")?.setValue(oppNameField.text.toString())
-            currentUserDB?.child("opp_goals")?.setValue(Integer.parseInt(oppGoalsField.text.toString()))
-            currentUserDB?.child("opp_points")?.setValue(Integer.parseInt(oppPointsField.text.toString()))
-
-                ?.addOnCompleteListener {
-                    Toast.makeText(context, "Saved Succesfully", Toast.LENGTH_LONG).show()
-
-                    homeGoalsField.setHint("Team Goals")
-                    homePointsField.setHint("Team Points")
-                    oppNameField.setHint("Opposition Name")
-                    oppGoalsField.setHint("Opposition Goals")
-                    oppPointsField.setHint("Opposition Points")
-
-                    lottieAnimationView.playAnimation()
-                }
-
+        if (oppGoalsField.text.toString().isEmpty()) {
+            oppGoalsField.error = "Please enter a score"
+            oppGoalsField.requestFocus()
+            return
         }
 
-    fun loadProfile(){
+        //Gets surent user and creates a unique key
+        val currentUser = auth.currentUser
+        val key = matchesReference?.push()?.key
+
+        //Gets home details and current userID
+        var userID = currentUser?.uid!!
+        var homeName = teamNameFieldNew.text.toString()
+        var homeGoals = Integer.parseInt(homeGoalsField.text.toString())
+        var homePoints = Integer.parseInt(homePointsField.text.toString())
+
+        //Gets Opposition details
+        var oppName = oppNameField.text.toString()
+        var oppGoals = Integer.parseInt(oppGoalsField.text.toString())
+        var oppPoints = Integer.parseInt(oppPointsField.text.toString())
+
+        //Creates match object
+        val match = Match(userID, homeName, homeGoals, homePoints, oppName, oppGoals, oppPoints)
+
+        //Adding match to the Matches table
+        matchesReference?.child(key.toString())?.setValue(match)
+
+                //On complete it gives a message depending on the result
+            ?.addOnCompleteListener {
+
+                //Celebration Animation and message if the users team wins
+                if (homeGoals * 3 + homePoints > oppGoals * 3 + oppPoints) {
+                    resetFields()
+                    lottieAnimationView.playAnimation()
+                    Toast.makeText(context, "Congratulations", Toast.LENGTH_LONG).show()
+                }
+                //Print message if a draw
+                if (homeGoals * 3 + homePoints == oppGoals * 3 + oppPoints) {
+                    resetFields()
+                    Toast.makeText(context, "Ohh draw game", Toast.LENGTH_LONG).show()
+                }
+                //Print a losing message if users team loses
+                if (homeGoals * 3 + homePoints < oppGoals * 3 + oppPoints) {
+                    resetFields()
+                    Toast.makeText(context, "Better Luck Next Time", Toast.LENGTH_LONG).show()
+                }
+            }
+    }
+
+    //Looads current user details to set the team name
+    fun loadProfile() {
         val user = auth.currentUser
         val userReference = profileReference?.child(user?.uid!!)
 
-        userReference?.addValueEventListener(object: ValueEventListener {
+        userReference?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 teamNameFieldNew.text = snapshot.child("team_name").value.toString()
                 homeName = snapshot.child("team_name").value.toString()
             }
 
+            //Use if details cannot be retrieved
             override fun onCancelled(error: DatabaseError) {
                 teamNameText.text = "Could not retrieve"
             }
         })
+    }
+
+
+    fun resetFields() {
+        homeGoalsField.setText("")
+        homePointsField.setText("")
+        oppNameField.setText("")
+        oppPointsField.setText("")
+        oppGoalsField.setText("")
     }
 }

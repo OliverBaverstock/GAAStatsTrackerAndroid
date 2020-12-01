@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.account_fragment.*
+import oliver.gaa_stats_tracker.LoginPage
 import oliver.gaa_stats_tracker.R
 import oliver.gaa_stats_tracker.WelcomePage
 
@@ -34,8 +35,14 @@ class AccountFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.account_fragment, container, false)
+        var view: View = inflater.inflate(R.layout.account_fragment, container, false)
+        var logoutButton: View = view.findViewById(R.id.logoutButton)
+        logoutButton.setOnClickListener {
+            auth.signOut()
+            startActivity(Intent(context, WelcomePage::class.java))
+            activity?.finish()
+        }
+        return view
 
     }
 
