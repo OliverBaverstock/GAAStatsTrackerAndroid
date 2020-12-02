@@ -28,7 +28,7 @@ class NewMatchFragment : Fragment() {
         super.onCreate(savedInstanceState)
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
-        matchesReference = database?.getReference("Matches")
+        matchesReference = database?.getReference("Matches")?.child(auth.currentUser?.uid!!)
         profileReference = database?.reference!!.child("Profile")
     }
 
@@ -70,15 +70,15 @@ class NewMatchFragment : Fragment() {
             return
         }
 
-        if (oppPointsField.text.toString().isEmpty()) {
-            oppPointsField.error = "Please enter a valid score"
-            oppPointsField.requestFocus()
-            return
-        }
-
         if (oppGoalsField.text.toString().isEmpty()) {
             oppGoalsField.error = "Please enter a score"
             oppGoalsField.requestFocus()
+            return
+        }
+
+        if (oppPointsField.text.toString().isEmpty()) {
+            oppPointsField.error = "Please enter a valid score"
+            oppPointsField.requestFocus()
             return
         }
 
