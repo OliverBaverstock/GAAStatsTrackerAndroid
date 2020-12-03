@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import kotlinx.android.synthetic.main.welcome_page.*
 import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.info
 
 class WelcomePage : AppCompatActivity(), AnkoLogger {
 
@@ -17,6 +19,7 @@ class WelcomePage : AppCompatActivity(), AnkoLogger {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.welcome_page)
         welcomeConstraint.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in))
+
 
         //Called when login button is clicked
         loginButton.setOnClickListener {

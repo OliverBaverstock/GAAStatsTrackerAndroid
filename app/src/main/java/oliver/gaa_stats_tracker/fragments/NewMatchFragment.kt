@@ -98,10 +98,10 @@ class NewMatchFragment : Fragment() {
         var oppPoints = Integer.parseInt(oppPointsField.text.toString())
 
         //Creates match object
-        val match = Match(userID, homeName, homeGoals, homePoints, oppName, oppGoals, oppPoints)
+        val match = Match(oppGoals, oppName, oppPoints, homeGoals, homeName, homePoints, userID)
 
         //Adding match to the Matches table
-        matchesReference?.child(key.toString())?.setValue(match)
+        matchesReference?.child(key!!)?.setValue(match)
 
                 //On complete it gives a message depending on the result
             ?.addOnCompleteListener {

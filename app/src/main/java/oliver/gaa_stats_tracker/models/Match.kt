@@ -1,7 +1,11 @@
 package oliver.gaa_stats_tracker.models
 
 //Creates a class of type Match and initializes the attributes of Match
-class Match(val userID: String?, val teamName: String?, val teamGoals: Int, val teamPoints: Int, val oppName: String?, val oppGoals: Int, val oppPoints: Int){
+data class Match(var oppGoals: Int, var oppName: String, var oppPoints: Int, var teamGoals: Int, var teamName: String, var teamPoints: Int, var userID: String){
+
+    constructor() : this(0, "", 0, 0, "", 0, "")
+
 }
+
 
 

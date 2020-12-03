@@ -13,12 +13,10 @@ import oliver.gaa_stats_tracker.LoginPage
 import oliver.gaa_stats_tracker.R
 import oliver.gaa_stats_tracker.WelcomePage
 
-// TODO: Rename parameter arguments, choose names that match
 
 class AccountFragment : Fragment() {
 
     lateinit var auth: FirebaseAuth
-    //var databaseReference : DatabaseReference? = null
     var database: FirebaseDatabase? = null
     var profileReference: DatabaseReference? = null
 
