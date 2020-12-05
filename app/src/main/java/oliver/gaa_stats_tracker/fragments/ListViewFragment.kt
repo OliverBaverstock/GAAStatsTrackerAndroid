@@ -29,11 +29,11 @@ class ListViewFragment : Fragment(), AnkoLogger {
     lateinit var auth: FirebaseAuth
     var database: FirebaseDatabase? = null
     var matchesReference: DatabaseReference? = null
-    var matchList = ArrayList<Match>()
+        var matchList = ArrayList<Match>()
 
-    var page = 1
-    var isLoading = false
-    var limit = 6
+        lateinit var layoutManager: RecyclerView.LayoutManager
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +41,6 @@ class ListViewFragment : Fragment(), AnkoLogger {
         database = FirebaseDatabase.getInstance()
         matchesReference = database?.getReference("Matches")?.child(auth.currentUser?.uid!!)
         matchesReference?.keepSynced(true)
-
     }
 
     override fun onCreateView(
@@ -60,17 +59,24 @@ class ListViewFragment : Fragment(), AnkoLogger {
             }
 
             override fun onDataChange(snapshot: DataSnapshot) {
+
                 matchList.clear()
-                for (data in snapshot.children) {
-                    val model = data.getValue(Match::class.java)
-                    matchList.add(model as Match)
-                    info { matchList }
+                    for (data in snapshot.children) {
+                        val model = data.getValue(Match::class.java)
+                        matchList.add(model as Match)
                 }
                 if(matchList.size > 0){
-                    val layoutManager = LinearLayoutManager(context)
+                    layoutManager = LinearLayoutManager(context)
                     recyclerView.layoutManager = layoutManager
                     val adapter = DataAdapter(matchList)
                     recyclerView.adapter = adapter
+                }
+                listTextSize.text = "You should add some matches!!"
+                if(matchList.size == 1){
+                    listTextSize.text = "You have " + matchList.size + " match saved!!"
+                }
+                if(matchList.size > 1){
+                    listTextSize.text = "Great you have " + matchList.size + " matches saved!!"
                 }
             }
         })

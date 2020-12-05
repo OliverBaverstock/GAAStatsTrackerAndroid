@@ -10,29 +10,43 @@
     <TextView
         android:id="@+id/matchListLabel"
         android:layout_width="242dp"
-        android:layout_height="67dp"
+        android:layout_height="75dp"
         android:fontFamily="sans-serif-thin"
         android:gravity="center"
         android:text="My Matches"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="#191818"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.079" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:scrollbars="vertical"
+            app:layout_constrainedHeight="true"
+            app:layout_constraintBottom_toTopOf="@+id/listTextSize"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/matchListLabel"
+            app:layout_constraintVertical_bias="0.0">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+
+    <TextView
+        android:id="@+id/listTextSize"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginBottom="4dp"
+        android:gravity="center"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/matchListLabel"
-        app:layout_constraintVertical_bias="0.0">
-
-    </androidx.recyclerview.widget.RecyclerView>
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
