@@ -67,5 +67,8 @@ class AccountFragment : Fragment() {
         })
     }
 
+    fun deleteAccount{
+        
+    }
 
 }

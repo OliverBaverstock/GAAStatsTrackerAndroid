@@ -5,19 +5,34 @@
     android:layout_height="match_parent"
     android:background="#CBFFFFFF">
 
-    <EditText
+    <View
+        android:id="@+id/view6"
+        android:layout_width="175dp"
+        android:layout_height="1dp"
+        android:background="#99191818"
+        app:layout_constraintBottom_toBottomOf="@+id/teamNameDetails"
+        app:layout_constraintEnd_toEndOf="@+id/teamNameDetails"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/teamNameDetails"
+        app:layout_constraintTop_toTopOf="@+id/teamNameDetails"
+        app:layout_constraintVertical_bias="0.8" />
+
+    <TextView
         android:id="@+id/teamNameDetails"
         android:layout_width="175dp"
         android:layout_height="41dp"
-        android:ems="10"
-        android:hint="Opposition Name"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/teamGoalsDetails"
+        android:fontFamily="sans-serif"
+        android:gravity="center_horizontal|left"
+        android:paddingBottom="3dp"
+        android:text="Carrigtwohill"
+        android:textColor="#BE191818"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.067"
+        app:layout_constraintHorizontal_bias="0.072"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/matchDetailsLabel"
-        app:layout_constraintVertical_bias="0.711" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.361" />
 
     <Button
         android:id="@+id/updateMatchButton"
@@ -29,7 +44,7 @@
         android:fadingEdge="none"
         android:fontFamily="sans-serif-light"
         android:foregroundTint="#A12222"
-        android:text="Add Match"
+        android:text="Update"
         app:cornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.762"

@@ -82,7 +82,7 @@ class NewMatchFragment : Fragment() {
             return
         }
 
-        //Gets surent user and creates a unique key
+        //Gets current user and creates a unique key
         val currentUser = auth.currentUser
         val key = matchesReference?.push()?.key
 

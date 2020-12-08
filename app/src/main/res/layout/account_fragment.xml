@@ -60,7 +60,7 @@
         android:id="@+id/logoutButton"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="110dp"
-        android:layout_height="49dp"
+        android:layout_height="55dp"
         android:backgroundTint="#52191818"
         android:fadingEdge="none"
         android:fontFamily="sans-serif-light"
@@ -69,10 +69,28 @@
         app:cornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.724"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailAddressText"
-        app:layout_constraintVertical_bias="0.123" />
+        app:layout_constraintVertical_bias="0.101" />
+
+    <Button
+        android:id="@+id/deleteAccountButton"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="110dp"
+        android:layout_height="55dp"
+        android:backgroundTint="#52191818"
+        android:fadingEdge="none"
+        android:fontFamily="sans-serif-light"
+        android:foregroundTint="#A12222"
+        android:text="Delete Account"
+        app:cornerRadius="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.279"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailAddressText"
+        app:layout_constraintVertical_bias="0.101" />
 
     <TextView
         android:id="@+id/emailAddressLabel"
