@@ -10,14 +10,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.oAuthProvider
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.account_fragment.*
 import kotlinx.android.synthetic.main.cardview_layout.view.*
 import kotlinx.android.synthetic.main.list_view_fragment.*
 import kotlinx.android.synthetic.main.new_match_fragment.*
+import oliver.gaa_stats_tracker.MatchDetails
 import oliver.gaa_stats_tracker.R
 import oliver.gaa_stats_tracker.WelcomePage
 import oliver.gaa_stats_tracker.models.Match
@@ -29,11 +32,12 @@ class ListViewFragment : Fragment(), AnkoLogger {
     lateinit var auth: FirebaseAuth
     var database: FirebaseDatabase? = null
     var matchesReference: DatabaseReference? = null
-        var matchList = ArrayList<Match>()
+    var matchList = ArrayList<Match>()
+    var model: Match? = null
+    var keyList = ArrayList<String>()
+    var key: String? = null
 
-        lateinit var layoutManager: RecyclerView.LayoutManager
-
-
+    lateinit var layoutManager: RecyclerView.LayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,13 +66,15 @@ class ListViewFragment : Fragment(), AnkoLogger {
 
                 matchList.clear()
                     for (data in snapshot.children) {
-                        val model = data.getValue(Match::class.java)
+                        model = data.getValue(Match::class.java)
+                        key = data.key
                         matchList.add(model as Match)
+                        keyList.add(key as String)
                 }
                 if(matchList.size > 0){
                     layoutManager = LinearLayoutManager(context)
                     recyclerView.layoutManager = layoutManager
-                    val adapter = DataAdapter(matchList)
+                    val adapter = DataAdapter(matchList, keyList)
                     recyclerView.adapter = adapter
                 }
                 listTextSize.text = "You should add some matches!!"
@@ -83,12 +89,21 @@ class ListViewFragment : Fragment(), AnkoLogger {
     }
 }
 
-class DataAdapter constructor(var list: ArrayList<Match>) :
+class DataAdapter constructor(var list: ArrayList<Match>, var keyList: ArrayList<String>) :
     RecyclerView.Adapter<DataAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var homeTeam = itemView.homeTeamLabel
         var awayTeam = itemView.awayTeamLabel
+        var matchID = itemView.matchID
+        init {
+            itemView.setOnClickListener {
+                val intent = Intent(itemView.context, MatchDetails::class.java)
+                intent.putExtra("MatchesKey", this.matchID.text)
+                print("Adapter Position: $adapterPosition")
+                itemView.context.startActivity(intent)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -108,5 +123,6 @@ class DataAdapter constructor(var list: ArrayList<Match>) :
     override fun onBindViewHolder(holder: DataAdapter.ViewHolder, position: Int) {
         holder.homeTeam.text = list[position].teamName
         holder.awayTeam.text = list[position].oppName
+        holder.matchID.text =  keyList[position]
     }
 }

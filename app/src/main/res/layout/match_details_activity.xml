@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#CBFFFFFF">
+
+    <EditText
+        android:id="@+id/teamNameDetails"
+        android:layout_width="175dp"
+        android:layout_height="41dp"
+        android:ems="10"
+        android:hint="Opposition Name"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/teamGoalsDetails"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.067"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/matchDetailsLabel"
+        app:layout_constraintVertical_bias="0.711" />
+
+    <Button
+        android:id="@+id/updateMatchButton"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="120dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="36dp"
+        android:backgroundTint="#52191818"
+        android:fadingEdge="none"
+        android:fontFamily="sans-serif-light"
+        android:foregroundTint="#A12222"
+        android:text="Add Match"
+        app:cornerRadius="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.762"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/oppPointsDetails" />
+
+    <Button
+        android:id="@+id/deleteMatchButton"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="120dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="36dp"
+        android:backgroundTint="#52191818"
+        android:fadingEdge="none"
+        android:fontFamily="sans-serif-light"
+        android:foregroundTint="#A12222"
+        android:text="Delete"
+        app:cornerRadius="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.243"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/teamPointsDetails" />
+
+    <Button
+        android:id="@+id/returnDetailsButton"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="120dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="84dp"
+        android:backgroundTint="#52191818"
+        android:fadingEdge="none"
+        android:fontFamily="sans-serif-light"
+        android:foregroundTint="#A12222"
+        android:text="Return"
+        app:cornerRadius="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/updateMatchButton" />
+
+    <EditText
+        android:id="@+id/oppNameDetails"
+        android:layout_width="175dp"
+        android:layout_height="41dp"
+        android:ems="10"
+        android:hint="Opposition Name"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/teamGoalsDetails"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.94"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/matchDetailsLabel"
+        app:layout_constraintVertical_bias="0.711" />
+
+    <EditText
+        android:id="@+id/oppPointsDetails"
+        android:layout_width="175dp"
+        android:layout_height="41dp"
+        android:ems="10"
+        android:hint="Opposition Points"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.94"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/matchDetailsLabel"
+        app:layout_constraintVertical_bias="0.555" />
+
+    <EditText
+        android:id="@+id/oppGoalsDetails"
+        android:layout_width="175dp"
+        android:layout_height="41dp"
+        android:ems="10"
+        android:hint="Opposition Goals"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.94"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/matchDetailsLabel"
+        app:layout_constraintVertical_bias="0.387" />
+
+    <TextView
+        android:id="@+id/matchDetailsLabel"
+        android:layout_width="242dp"
+        android:layout_height="67dp"
+        android:fontFamily="sans-serif-thin"
+        android:gravity="center"
+        android:text="Match Details"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="#191818"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.079" />
+
+    <EditText
+        android:id="@+id/teamGoalsDetails"
+        android:layout_width="175dp"
+        android:layout_height="41dp"
+        android:ems="10"
+        android:hint="Team Goals"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.072"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/matchDetailsLabel"
+        app:layout_constraintVertical_bias="0.389" />
+
+    <EditText
+        android:id="@+id/teamPointsDetails"
+        android:layout_width="175dp"
+        android:layout_height="41dp"
+        android:ems="10"
+        android:hint="Team Points"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.072"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/matchDetailsLabel"
+        app:layout_constraintVertical_bias="0.555" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
