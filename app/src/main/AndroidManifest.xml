@@ -10,7 +10,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Fullscreen">
+        android:theme="@style/Fullscreen"
+        android:usesCleartextTraffic="true">
         <activity
             android:name=".MatchDetails"
             android:theme="@style/Fullscreen"/>

@@ -25,6 +25,7 @@
         android:layout_height="41dp"
         android:fontFamily="sans-serif"
         android:gravity="center_horizontal|left"
+        android:hint="Team Name"
         android:paddingBottom="3dp"
         android:textColor="#BE191818"
         android:textSize="22sp"

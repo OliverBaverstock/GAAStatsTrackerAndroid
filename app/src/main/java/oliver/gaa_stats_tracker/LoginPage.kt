@@ -26,12 +26,6 @@ class LoginPage : AppCompatActivity(), AnkoLogger {
         super.onCreate(savedInstanceState)
         auth = FirebaseAuth.getInstance()
 
-//        val currentuser = auth.currentUser
-//        if(currentuser != null){
-//            startActivity(Intent(this, LoggedIn::class.java))
-//            finish()
-//        }
-
         setContentView(R.layout.login_page)
         loginConstraint.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in))
 

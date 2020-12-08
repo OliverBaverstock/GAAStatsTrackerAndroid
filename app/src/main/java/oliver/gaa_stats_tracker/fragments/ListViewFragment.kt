@@ -77,7 +77,9 @@ class ListViewFragment : Fragment(), AnkoLogger {
                     val adapter = DataAdapter(matchList, keyList)
                     recyclerView.adapter = adapter
                 }
-                listTextSize.text = "You should add some matches!!"
+                if(matchList.size == 0) {
+                    listTextSize.text = "You should add some matches!!"
+                }
                 if(matchList.size == 1){
                     listTextSize.text = "You have " + matchList.size + " match saved!!"
                 }
